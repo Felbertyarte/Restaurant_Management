@@ -7,14 +7,6 @@ public class user {
     private String storename;
     private String usertype;
 
-    public user(int storeID, int usertypeID, int personID, String storename, String usertype) {
-        this.storename = storename;
-        this.usertype = usertype;
-        this.storeID = storeID;
-        this.usertypeID = usertypeID;
-        this.personID = personID;
-    }
-
     public String getStorename() {
         return storename;
     }
