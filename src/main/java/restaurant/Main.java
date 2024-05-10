@@ -18,7 +18,7 @@ public class Main extends Application {
         this.parent = FXMLLoader.load(getClass().getResource("/restaurant/views/auth_view.fxml"));
         this.scene = new Scene(parent);
 
-        this.scene.getStylesheets().add(getClass().getResource("/restaurant/views/style.css").toExternalForm());
+        // this.scene.getStylesheets().add(getClass().getResource("/restaurant/views/style.css").toExternalForm());
         primaryStage.setTitle("Restaurant");
         primaryStage.setScene(scene);
         primaryStage.show();
