@@ -1,6 +1,6 @@
 .button{
-    -fx-background-radius:15;
-    -fx-border-radius:15;
+    -fx-background-radius:10;
+    -fx-border-radius:10;
     -fx-background-color:#D36135;
 
 }
@@ -8,4 +8,14 @@
     -fx-background-radius:10;
     -fx-border-radius:10;
     -fx-background-color:#E8E8E8;
+}
+.navbar{
+    -fx-background-color:#ffffff;
+    -fx-background-radius:5;
+}
+.navbutton:hover{
+    -fx-background-radius:10;
+    -fx-border-radius:10;
+    -fx-background-color:#E8E8E8;
+
 }

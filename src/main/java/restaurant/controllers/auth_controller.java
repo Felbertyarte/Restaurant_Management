@@ -46,7 +46,7 @@ public class auth_controller {
                 User.setUsertype(rs.getString("usertype"));
                 User.setUsertypeID(rs.getInt("usertypeID"));
                 User.setStoreID(rs.getInt("storeID"));
-                User.setStoreID(rs.getInt("storeID"));
+                User.setStorename(rs.getString("storename"));
                 return User;
 
             } else {
