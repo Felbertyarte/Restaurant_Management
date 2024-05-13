@@ -1,6 +1,7 @@
 package restaurant.models;
 
 public class product {
+    int ID;
     String name;
     int price;
     int category_ID;
@@ -46,6 +47,14 @@ public class product {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
 }
