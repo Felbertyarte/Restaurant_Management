@@ -14,14 +14,19 @@
     -fx-background-radius:5;
 }
 .navbutton:hover{
-    -fx-background-radius:10;
-    -fx-border-radius:10;
+    -fx-background-radius:15;
+    -fx-border-radius:15;
     -fx-background-color:#E8E8E8;
 
 }
-.product_card_panel{
-    -fx-background-color:#ffffff;
+.scroll-pane {
+    -fx-background-color: transparent;
 }
-.transparent{
-    -fx-background-color:rgba(0,0,0,);
+.image-shadow-effect {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0), 10, 0, 0, 0);
+}
+.product_card{
+    -fx-background-radius:20;
+    -fx-border-radius:20;
+    -fx-background-color:#E8E8E8;
 }
