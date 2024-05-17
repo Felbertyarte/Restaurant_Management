@@ -24,12 +24,12 @@ public class product_card_controller {
     @FXML
     private Label product_stock;
 
-    public void setdata(product Product, int Stock) {
+    public void setdata(product Product) {
         this.productID = Product.getID();
         this.product_name.setText(Product.getName());
         this.product_price.setText("₱" + String.valueOf(Product.getPrice()));
-        this.product_stock.setText("Stock: " + String.valueOf(Stock));
-        File file = new File("C:/Users/Administrator/Downloads/pizza-2.png");
+        this.product_stock.setText("Stock: " + String.valueOf((int) Product.getStock()));
+        File file = new File(Product.getPicture());
         Image image = new Image(file.toURI().toString());
         this.product_img.setImage(image);
     }

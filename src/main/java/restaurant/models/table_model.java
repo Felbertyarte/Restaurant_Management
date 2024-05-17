@@ -1,6 +1,7 @@
 package restaurant.models;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import restaurant.db.database;
@@ -73,6 +74,23 @@ public class table_model extends database {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    // retrieve table where ID
+    public ResultSet retrieve_table(int storeID) throws SQLException {
+        String sql = "select * from tbl_table where storeID = ? and isAvailable = 1";
+        try {
+            ps = getConnection().prepareStatement(sql);
+            ps.setInt(1, storeID);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            getConnection().close();
+            ps.close();
+            return null;
+        }
+
     }
 
 }

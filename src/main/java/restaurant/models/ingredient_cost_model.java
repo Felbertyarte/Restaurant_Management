@@ -59,4 +59,15 @@ public class ingredient_cost_model extends database {
         return rs;
     }
 
+    // retrieve ingredients cost base on product
+    public ResultSet get_ingredient_cost(int productID) throws SQLException {
+        String sql = """
+                SELECT * FROM `tbl_ingredient_cost` WHERE `productID` =?;
+                """;
+        ps = getConnection().prepareStatement(sql);
+        ps.setInt(1, productID);
+        ResultSet rs = ps.executeQuery();
+        return rs;
+    }
+
 }

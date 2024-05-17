@@ -1,12 +1,13 @@
 package restaurant.models;
 
 public class product {
-    int ID;
-    String name;
-    int price;
-    int category_ID;
-    String picture;
-    String type;
+    private int ID;
+    private String name;
+    private int price;
+    private int category_ID;
+    private String picture;
+    private String type;
+    private double stock;
 
     // create getter and setters
     public String getName() {
@@ -50,11 +51,19 @@ public class product {
     }
 
     public int getID() {
-        return ID;
+        return this.ID;
     }
 
     public void setID(int ID) {
         this.ID = ID;
+    }
+
+    public double getStock() {
+        return stock;
+    }
+
+    public void setStock(double stock) {
+        this.stock = stock;
     }
 
 }

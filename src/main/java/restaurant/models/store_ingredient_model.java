@@ -62,4 +62,16 @@ public class store_ingredient_model extends database {
         return rs;
     }
 
+    // get stock specific ingredientID
+    public ResultSet get_ingredient_stock(int storeID, int ingredientID) throws SQLException {
+        String sql = """
+                SELECT stock FROM tbl_store_ingredient where storeID = ? AND ingredientID = ?;
+                """;
+        this.ps = getConnection().prepareStatement(sql);
+        this.ps.setInt(1, storeID);
+        this.ps.setInt(2, ingredientID);
+        ResultSet rs = this.ps.executeQuery();
+        return rs;
+    }
+
 }
