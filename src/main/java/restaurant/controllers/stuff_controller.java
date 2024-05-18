@@ -38,6 +38,7 @@ public class stuff_controller {
             this.stuff_pos_root = this.stuff_pos_view.load();
             this.stuff_pos_controller = this.stuff_pos_view.getController();
             this.stuff_pos_controller.set_pos_currentuser(this.currentuser);
+
             this.stuff_pos_controller.product_load();
 
         } catch (IOException e) {

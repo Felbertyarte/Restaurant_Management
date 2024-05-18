@@ -54,6 +54,7 @@ public class stuff_pos_controller {
 
     public void pos_set_invoice(Invoice invoice) {
         this.invoice = invoice;
+        update_orders();
     }
 
     @FXML
@@ -80,9 +81,12 @@ public class stuff_pos_controller {
             fxmlLoader5.setLocation(getClass().getResource("/restaurant/views/order_view.fxml"));
             AnchorPane order = fxmlLoader5.load();
             order_controller ordercontroller = fxmlLoader5.getController();
-            this.ordersmodel.retrieve_order(this.invoice);
-            // here
-        } catch (IOException e) {
+            ResultSet rs = this.ordersmodel.retrieve_order(this.invoice);
+            while (rs.next()) {
+                // here
+            }
+            System.out.println(invoice.getID());
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
 
@@ -157,7 +161,6 @@ public class stuff_pos_controller {
                 this.product_grid.add(product_card, column++, row);
                 GridPane.setMargin(product_card, new Insets(10));
             }
-
         } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
