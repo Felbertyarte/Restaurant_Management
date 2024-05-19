@@ -83,7 +83,11 @@ public class stuff_pos_controller {
             order_controller ordercontroller = fxmlLoader5.getController();
             ResultSet rs = this.ordersmodel.retrieve_order(this.invoice);
             while (rs.next()) {
-                // here
+                order Order = new order();
+                Order.setinvoiceID(rs.getInt("invoiceID"));
+                Order.setproductID(rs.getInt("productID"));
+                Order.setquantity(rs.getInt("quantity"));
+                ordercontroller.setdata(Order);
             }
             System.out.println(invoice.getID());
         } catch (IOException | SQLException e) {

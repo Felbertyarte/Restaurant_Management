@@ -24,7 +24,7 @@ public class orders_model extends database {
     }
 
     public ResultSet retrieve_order(Invoice invoice) {
-        String sql = "SELECT tbl_product.name as product_name, tbl_orders.quantity as qty, (tbl_product.price * tbl_orders.quantity) as subtotal, tbl_product.picture as img from tbl_orders INNER JOIN tbl_product on tbl_orders.productID = tbl_product.ID where invoiceID = ?";
+        String sql = "SELECT * from tbl_orders where invoiceID = ?";
         try {
             ps = getConnection().prepareStatement(sql);
             ps.setInt(1, 1);

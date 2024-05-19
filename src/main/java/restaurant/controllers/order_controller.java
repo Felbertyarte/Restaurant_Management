@@ -1,14 +1,18 @@
 package restaurant.controllers;
 
+import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import restaurant.models.Invoice;
+import restaurant.models.order;
 import restaurant.models.product;
 
 public class order_controller {
 
-    private product Product;
+    private order Order;
 
     @FXML
     private ImageView delete_btn;
@@ -31,8 +35,8 @@ public class order_controller {
     @FXML
     private Label qty;
 
-    public void setdata(product Product, int qty) {
-        this.Product = Product;
+    public void setdata(order Order) {
+        this.Order = Order;
     }
 
     @FXML
