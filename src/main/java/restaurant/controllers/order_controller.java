@@ -1,5 +1,8 @@
 package restaurant.controllers;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
 
 import javafx.fxml.FXML;
@@ -9,10 +12,14 @@ import javafx.scene.input.MouseEvent;
 import restaurant.models.Invoice;
 import restaurant.models.order;
 import restaurant.models.product;
+import restaurant.models.ingredient_cost;
+import restaurant.models.ingredient_cost_model;
 
 public class order_controller {
 
     private order Order;
+    private ingredient_cost IngredientCost;
+    private ingredient_cost_model IngredientCostModel;
 
     @FXML
     private ImageView delete_btn;
@@ -37,6 +44,7 @@ public class order_controller {
 
     public void setdata(order Order) {
         this.Order = Order;
+        System.out.println("this is the orders of invoice" + this.Order.getinvoiceID() + this.Order.getproductID());
     }
 
     @FXML
@@ -46,7 +54,6 @@ public class order_controller {
 
     @FXML
     void minus_btn(MouseEvent event) {
-
     }
 
     @FXML

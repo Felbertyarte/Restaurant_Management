@@ -29,7 +29,8 @@ import java.util.List;
 import java.util.Collections;
 import restaurant.controllers.order_controller;
 import restaurant.models.Invoice;
-import restaurant.models.orders_model;;
+import restaurant.models.orders_model;
+import restaurant.models.ingredient_cost;
 
 public class stuff_pos_controller {
     private String storename;
@@ -54,6 +55,7 @@ public class stuff_pos_controller {
 
     public void pos_set_invoice(Invoice invoice) {
         this.invoice = invoice;
+        System.out.println("the current invoice is: " + this.invoice.getID());
         update_orders();
     }
 

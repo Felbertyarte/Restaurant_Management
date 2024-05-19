@@ -2,6 +2,7 @@ package restaurant.models;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import restaurant.db.database;
 
@@ -86,5 +87,19 @@ public class product_model extends database {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public ResultSet retrieve_product(int categoryID) {
+        String sql = "SELECT * tbl_product where categoryID = ?";
+        try {
+            ps = getConnection().prepareStatement(sql);
+            ps.setInt(1, categoryID);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
 }
