@@ -89,7 +89,7 @@ public class stuff_controller {
             this.new_order_btn.setDisable(true);
             invoice = createinvoicedialogcontroller.getInvoice();
             int generatedInvoiceID = this.invoicemodel.create_invoice(invoice);
-            invoice.setID(1);
+            invoice.setID(generatedInvoiceID);
             stuff_pos_controller.pos_set_invoice(invoice);
             this.stuff_page.getChildren().setAll(stuff_pos_root);
             stuff_pos_root.setVisible(true);

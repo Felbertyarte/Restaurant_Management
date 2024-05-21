@@ -1,12 +1,14 @@
 package restaurant.controllers;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
@@ -22,21 +24,22 @@ import restaurant.models.product_model;
 import restaurant.models.store_ingredient_model;
 import restaurant.models.user;
 import restaurant.models.ingredient_cost_model;
+import restaurant.models.ingredient_model;
 import restaurant.models.order;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.Collections;
 import restaurant.controllers.order_controller;
 import restaurant.models.Invoice;
-import restaurant.models.orders_model;
-import restaurant.models.ingredient_cost;
+import restaurant.models.orders_model;;
 
-public class stuff_pos_controller {
+public class stuff_pos_controller implements Initializable {
     private String storename;
     private product_model productmodel;
     private user current_user;
-    private order_controller ordercontroller;
+
     private FXMLLoader order_view;
     private AnchorPane order_view_root;
     private ingredient_cost_model ingredient_cost;
@@ -44,6 +47,10 @@ public class stuff_pos_controller {
     private int order_row;
     private Invoice invoice;
     private orders_model ordersmodel;
+    private int storeID;
+    private ingredient_cost IngredientCost;
+    private ingredient_cost_model IngredientCostModel;
+    private ingredient_model IngredientModel;
 
     public stuff_pos_controller() throws SQLException, IOException {
         this.productmodel = new product_model();
@@ -55,8 +62,11 @@ public class stuff_pos_controller {
 
     public void pos_set_invoice(Invoice invoice) {
         this.invoice = invoice;
-        System.out.println("the current invoice is: " + this.invoice.getID());
         update_orders();
+    }
+
+    public void setStoreID(int StoreID) {
+        this.storeID = StoreID;
     }
 
     @FXML
@@ -77,22 +87,22 @@ public class stuff_pos_controller {
     @FXML
     private Label store_name;
 
+    public GridPane getProductGrid() {
+        return product_grid;
+    }
+
+    public GridPane get_order_grid_pane() {
+        return this.order_grid_pane;
+    }
+
     void update_orders() {
         try {
-            FXMLLoader fxmlLoader5 = new FXMLLoader();
-            fxmlLoader5.setLocation(getClass().getResource("/restaurant/views/order_view.fxml"));
-            AnchorPane order = fxmlLoader5.load();
-            order_controller ordercontroller = fxmlLoader5.getController();
             ResultSet rs = this.ordersmodel.retrieve_order(this.invoice);
             while (rs.next()) {
-                order Order = new order();
-                Order.setinvoiceID(rs.getInt("invoiceID"));
-                Order.setproductID(rs.getInt("productID"));
-                Order.setquantity(rs.getInt("quantity"));
-                ordercontroller.setdata(Order);
+                // here
             }
             System.out.println(invoice.getID());
-        } catch (IOException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -148,14 +158,7 @@ public class stuff_pos_controller {
                 // add product card event
                 // when product card clicked
                 product_card.setOnMouseClicked(event -> {
-                    try {
-                        order Order = new order();
-                        Order.setinvoiceID(this.invoice.getID());
-                        Order.setproductID(Product.getID());
-                        ordersmodel.create_orders(Order);
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
+                    System.out.println("you clicked product card");
                 });
 
                 if (column == 4) {
@@ -170,5 +173,11 @@ public class stuff_pos_controller {
         } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        this.IngredientCostModel = new ingredient_cost_model();
+        this.IngredientModel = new ingredient_model();
     }
 }
